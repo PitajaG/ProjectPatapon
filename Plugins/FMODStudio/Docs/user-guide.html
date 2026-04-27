@@ -361,9 +361,10 @@ You will need to add these parameter names to the integration settings.</p>
 <p>Start by replacing the old FMODStudio folder with the new version:</p>
 <ul>
 <li>Delete the old FMODStudio folder then follow the same steps from <a href="user-guide.html#installing-the-integration">Installing the integration</a>.</li>
+<li>It may be necessary to delete the project's 'Binaries' and 'Intermediate' folders to force UE to use the newly added version. If you have previously packaged your project, Unreal will have precomiled binaries left over in those folders.</li>
 </ul>
 <p>If you are updating to a newer <a href="glossary.html#version">minor version</a> of FMOD no additional steps are required unless specified in the <a href="https://fmod.com/docs/2.03/api/welcome-revision-history.html">revision history</a>.</p>
-<p>Upgrading to a newer <a href="glossary.html#version">major version</a> of FMOD is usually only recommend for projects at or near the beginning of development, because new major versions may  introduce behavioral and breaking changes. If you are upgrading to a new major version, you will need to read over:</p>
+<p>Upgrading to a newer <a href="glossary.html#version">major version</a> of FMOD is usually only recommend for projects at or near the beginning of development, because new major versions may introduce behavioral and breaking changes. If you are upgrading to a new major version, you will need to read over:</p>
 <ul>
 <li><a href="welcome.html">What's new in FMOD for Unreal Integration...</a></li>
 <li><a href="https://fmod.com/docs/2.03/api/welcome.html">What's new in FMOD API...</a></li>
@@ -741,7 +742,7 @@ AudioMixerModuleName=
 </ul>
 <p>This can be especially useful for build machines that don't normally run the Editor at all, which is what normally triggers the assets to be built, and does not require the generated assets to be checked in to source control.</p></div>
 
-<p class="manual-footer">Unreal Integration 2.03.11 (2025-11-18). &copy; 2025 Firelight Technologies Pty Ltd.</p>
+<p class="manual-footer">Unreal Integration 2.03.13 (2026-03-31). &copy; 2026 Firelight Technologies Pty Ltd.</p>
 </div>
 </body>
 </html>

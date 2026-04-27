@@ -22,8 +22,11 @@
 <li><a href="#fmod-haptics-setup">FMOD Haptics Setup</a><ul>
 <li><a href="#supported-devices">Supported Devices</a></li>
 <li><a href="#dependencies">Dependencies</a></li>
-<li><a href="#enable-fmod-studio-openxr">Enable FMOD Studio OpenXR</a></li>
+<li><a href="#enable-fmod-studio-openxr-quest-only">Enable FMOD Studio OpenXR (Quest only)</a><ul>
+<li><a href="#dependencies_1">Dependencies</a></li>
 <li><a href="#apl-configuration">APL Configuration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -169,31 +172,40 @@
 <p><img alt="Plugins" src="images/callback-handler.png" /></p>
 <p>Alternatively you can specify a callback handler on a per-platform basis in the <a href="settings.html#platform-settings">Platform Settings</a>. If both callback handlers are specified only the platform specific callback handler will be executed.</p>
 <h2 id="deploying-fmod-plugins"><a href="#deploying-fmod-plugins">4.2 Deploying FMOD plugins</a></h2>
-<p>You will need to make sure that both static and dynamic plugins are deployed as well. Unreal deployment doesn't have access to the settings information so you will need to create an extra file that lists the plugins you want to deploy.</p>
-<p>Create a file "plugins.txt" in the platform's binary directory. The text file should contain the plugin names (just the name without file extension).</p>
+<div class="admonition warning">
+<p>The following steps are no longer required after v2.03.13.<br />
+The integration will now use the list of plugins from the FMOD Unreal Settings.</p>
+</div>
+<p>You will need to make sure that both static and dynamic plugins are deployed. Unreal deployment doesn't have access to the settings information so you will need to create an extra file that lists the plugins you want to deploy.</p>
+<p>Create a file "plugins.txt" in the platform's "Binaries" directory. The text file should contain the plugin names (just the name without file extension).</p>
 <p>For example, to deploy fmod_gain.dll on Win64 builds, create a file FMODStudio/Binaries/Win64/plugins.txt with the following contents:</p>
 <div class="highlight language-text"><pre><span></span>fmod_gain
 </pre></div>
 
 <p>Check the <a href="platform-specifics.html">Platform Specifics</a> for information relating to plugins on specific platforms.</p>
 <h2 id="fmod-haptics-setup"><a href="#fmod-haptics-setup">4.3 FMOD Haptics Setup</a></h2>
-<p>The FMOD haptics plugin can be used to generate haptic vibrations authored in <a href="https://developers.meta.com/horizon/resources/haptics-studio">Meta Haptics Studio</a>. If you have an Xbox or PS5 controller connected to your computer you can audition <a href="https://fmod.com/docs/2.03/studio/glossary.html#event">events</a> containing the <a href="https://fmod.com/docs/2.03/studio/instrument-reference.html#haptics-instrument">Haptics Instrument</a> in-editor. Meta Quest controllers cannot be auditioned in-editor, and require additional configuration for use in a built application. The above setup is sufficient for haptic vibrations on all other supported devices. Please ensure you have completed the above <a href="plugins.html#dynamic-plugins">Dynamic Plugin</a> setup before proceeding.</p>
+<p>The FMOD Haptics plugin can be used to generate haptic vibrations authored in <a href="https://developers.meta.com/horizon/resources/haptics-studio">Meta Haptics</a> Studio.<br />
+In order to enable the plugin, you’ll need to follow the <a href="plugins.html#dynamic-plugins">Dynamic Plugin</a> setup guide. For FMOD Haptics, navigate to Project Settings, select FMOD Studio under the Plugins section, then scroll to Advanced then finally Plugin Files. Click the Plus icon to add an entry and add “fmod_haptics”. You'll need to restart your editor to apply these changes.</p>
+<p><img alt="Loading the FMOD Haptics plugin from the Project settings" src="images/fmod-haptics-load.png" /></p>
+<p>If you have an Xbox or PS5 controller connected to your computer you can audition <a href="https://fmod.com/docs/2.03/studio/glossary.html#event">events</a> containing the <a href="https://fmod.com/docs/2.03/studio/instrument-reference.html#haptics-instrument">Haptics Instrument</a> in-editor. Meta Quest controllers cannot be auditioned in-editor, and require additional configuration for use in a built application. The above setup is sufficient for haptic vibrations on all other supported devices.</p>
 <h3 id="supported-devices"><a href="#supported-devices">4.3.1 Supported Devices</a></h3>
 <ul>
 <li>PS5 DualSense Wireless Controller</li>
 <li>Xbox Wireless Controller</li>
-<li>Meta Quest 2 Controllers</li>
-<li>Meta Quest Plus/Pro Controllers</li>
+<li>Meta Quest Touch, Touch Plus and Touch Pro controllers</li>
 </ul>
 <h3 id="dependencies"><a href="#dependencies">4.3.2 Dependencies</a></h3>
 <ul>
 <li>Unreal Engine 5.4 or above</li>
+</ul>
+<h3 id="enable-fmod-studio-openxr-quest-only"><a href="#enable-fmod-studio-openxr-quest-only">4.3.3 Enable FMOD Studio OpenXR (Quest only)</a></h3>
+<h4 id="dependencies_1"><a href="#dependencies_1">Dependencies</a></h4>
+<ul>
 <li>OpenXR Unreal Plugin</li>
 </ul>
-<h3 id="enable-fmod-studio-openxr"><a href="#enable-fmod-studio-openxr">4.3.3 Enable FMOD Studio OpenXR</a></h3>
-<p>The FMOD Studio OpenXR Integration is disabled by default, and must be enabled for FMOD haptics to operate on Quest. To enable it, navigate to "Edit &gt; Plugins", and search for "FMOD Studio OpenXR Integration". Tick the plugin to enable it, and restart the Unreal Editor for changes to take effect.</p>
+<p>The FMOD Studio OpenXR Integration is disabled by default, and must be enabled for FMOD Haptics to operate on Quest. To enable it, navigate to "Edit &gt; Plugins", and search for "FMOD Studio OpenXR Integration". Tick the plugin to enable it, and restart the Unreal Editor for changes to take effect.</p>
 <p><img alt="FMOD Studio OpenXR Integration" src="images/fmod-studio-openxr-integration.png" /></p>
-<h3 id="apl-configuration"><a href="#apl-configuration">4.3.4 APL Configuration</a></h3>
+<h4 id="apl-configuration"><a href="#apl-configuration">APL Configuration</a></h4>
 <p>A specific <a href="platform-specifics.html#deployment-of-android-plugins">APL file</a> is required for packaging on Meta Quest. Please create a new file in <code>Plugins/FMODStudio/Binaries/Android</code> called "fmod_haptics_APL.xml" with the following contents:</p>
 <div class="highlight language-xml"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="c">&lt;!--Plugin additions--&gt;</span>
@@ -218,7 +230,7 @@
 <span class="nt">&lt;/root&gt;</span>
 </pre></div></div>
 
-<p class="manual-footer">Unreal Integration 2.03.11 (2025-11-18). &copy; 2025 Firelight Technologies Pty Ltd.</p>
+<p class="manual-footer">Unreal Integration 2.03.13 (2026-03-31). &copy; 2026 Firelight Technologies Pty Ltd.</p>
 </div>
 </body>
 </html>

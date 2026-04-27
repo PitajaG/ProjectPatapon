@@ -1,4 +1,4 @@
-// Copyright (c), Firelight Technologies Pty, Ltd. 2012-2025.
+// Copyright (c), Firelight Technologies Pty, Ltd. 2012-2026.
 
 #include "Sequencer/FMODChannelEditors.h"
 #include "ISequencerChannelInterface.h"
@@ -10,6 +10,7 @@
 #include "Editor/EditorWidgets/Public/SEnumCombo.h"
 #include "EditorStyleSet.h"
 #include "Channels/MovieSceneChannelTraits.h"
+#include "ISequencer.h"
 
 class SFMODEventControlKeyEditor : public SCompoundWidget
 {

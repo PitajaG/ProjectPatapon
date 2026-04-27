@@ -39,7 +39,8 @@
 <li><a href="#one-shot-vs-looping">One-Shot vs Looping</a></li>
 </ul>
 </li>
-<li><a href="#parameter-cache">Parameter Cache</a><ul>
+<li><a href="#parameter-cache">Parameter Cache</a></li>
+<li><a href="#automated-parameter-cache">Automated Parameter Cache</a><ul>
 <li><a href="#blueprint_1">Blueprint</a></li>
 <li><a href="#c">C++</a></li>
 </ul>
@@ -91,6 +92,8 @@ Searching for <code>FMOD Ambient Sound</code> wil expose the component to be add
 </ul>
 <h3 id="parameter-cache"><a href="#parameter-cache">11.2.3 Parameter Cache</a></h3>
 <p>You can set Initial <a href="https://fmod.com/docs/2.03/studio/parameters.html">Parameters</a> values in the component before playback starts. The array will be populated by parameters applied to the event in FMOD Studio. To change parameter values during gameplay during playback via Blueprints of C++:</p>
+<h3 id="automated-parameter-cache"><a href="#automated-parameter-cache">11.2.4 Automated Parameter Cache</a></h3>
+<p>This shows a non-editable list of all parameters which are being either automated in FMOD Studio or used for Occlusion and Ambience, which are specified in the settings.</p>
 <h4 id="blueprint_1"><a href="#blueprint_1">Blueprint</a></h4>
 <p><a href="blueprint-reference-eventinstance.html#event-instance-set-parameter">Event Instance Set Parameter</a><br />
 <img alt="Event Instance Set Parameter" src="images/event-instance-set-parameter.png" /></p>
@@ -98,15 +101,15 @@ Searching for <code>FMOD Ambient Sound</code> wil expose the component to be add
 <div class="highlight language-cpp"><pre><span></span><span class="n">Emitter</span><span class="o">-&gt;</span><span class="n">SetParameter</span><span class="p">(</span><span class="s">&quot;Wind&quot;</span><span class="p">,</span> <span class="mf">0.5f</span><span class="p">);</span>
 </pre></div>
 
-<h3 id="programmer-sound-name"><a href="#programmer-sound-name">11.2.4 Programmer Sound Name</a></h3>
+<h3 id="programmer-sound-name"><a href="#programmer-sound-name">11.2.5 Programmer Sound Name</a></h3>
 <p>An Audio Component can be used to set the key or file path to be played via a <a href="%studio&amp;glossary.html#programmer-instrument">Programmer Instrument</a></p>
-<h3 id="attenuation-3d-settings"><a href="#attenuation-3d-settings">11.2.5 Attenuation &amp; 3D Settings</a></h3>
+<h3 id="attenuation-3d-settings"><a href="#attenuation-3d-settings">11.2.6 Attenuation &amp; 3D Settings</a></h3>
 <p>Enabling Attenuation Override will apply then be able to apply new minimum and maximum values for falloff distances.</p>
 <p>Note: the values entered here will not affect a spatializer on the event that is overriding with its own values.</p>
-<h3 id="occlusion-details"><a href="#occlusion-details">11.2.6 Occlusion Details</a></h3>
+<h3 id="occlusion-details"><a href="#occlusion-details">11.2.7 Occlusion Details</a></h3>
 <p>Enabling occlusion will use a raycast from the event to the listener to determine of occlusion should be applied to the signal of the event. The Channel to be checked against can be changed here. For more information please refer to the <a href="user-guide.html#occlusion">Occlusion Settings</a>.</p></div>
 
-<p class="manual-footer">Unreal Integration 2.03.11 (2025-11-18). &copy; 2025 Firelight Technologies Pty Ltd.</p>
+<p class="manual-footer">Unreal Integration 2.03.13 (2026-03-31). &copy; 2026 Firelight Technologies Pty Ltd.</p>
 </div>
 </body>
 </html>

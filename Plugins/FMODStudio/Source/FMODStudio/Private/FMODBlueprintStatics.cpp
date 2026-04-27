@@ -1,4 +1,4 @@
-// Copyright (c), Firelight Technologies Pty, Ltd. 2012-2025.
+// Copyright (c), Firelight Technologies Pty, Ltd. 2012-2026.
 
 #include "FMODBlueprintStatics.h"
 #include "FMODAudioComponent.h"
@@ -11,7 +11,6 @@
 #include "FMODVCA.h"
 #include "fmod_studio.hpp"
 #include "fmod_errors.h"
-#include "FMODStudioPrivatePCH.h"
 
 /////////////////////////////////////////////////////
 // UFMODBlueprintStatics
